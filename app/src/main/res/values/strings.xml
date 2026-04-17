@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">TempoTuneStudio</string>
+    <string name="home_subtitle">Change pitch &amp; tempo without losing quality</string>
+    <string name="home_url_label">Video URL</string>
+    <string name="home_url_hint">https://example.com/video.mp4</string>
+    <string name="btn_load_video">Load Video</string>
+    <string name="btn_paste">Paste URL</string>
+    <string name="btn_pick_file">Browse files…</string>
+    <string name="home_or_divider">or</string>
+    <string name="home_validating">Checking file…</string>
+    <string name="error_no_audio">File contains no audio track</string>
+    <string name="error_unreadable">Could not read file</string>
+    <string name="btn_export">Export Video</string>
+    <string name="btn_reset">Reset</string>
+    <string name="label_pitch">Pitch</string>
+    <string name="label_tempo">Tempo</string>
+    <string name="feature_pitch">Pitch shift</string>
+    <string name="feature_tempo">Tempo control</string>
+    <string name="feature_quality">Lossless quality</string>
+    <string name="feature_export">Export MP4</string>
+</resources>

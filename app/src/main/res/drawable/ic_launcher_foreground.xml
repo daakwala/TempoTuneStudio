@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Music note head -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M41,47 A9,7 -20,1,1 41,47
+                          A9,7 -20,1,0 41,47"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M37,52 C28,56 27,46 35,44 C43,42 47,48 41,52 C38,54 34,53 37,52Z"/>
+
+    <!-- Stem (was <rect left=49 top=23 right=52 bottom=49>) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M49,23 L52,23 L52,49 L49,49 Z"/>
+
+    <!-- Flag -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M52,23 C63,26 65,38 58,44 C56,38 57,30 52,28Z"/>
+
+    <!-- Waveform bars (rects converted to paths) -->
+    <path android:fillColor="#CE93D8" android:pathData="M22,68 L26,68 L26,80 L22,80 Z"/>
+    <path android:fillColor="#CE93D8" android:pathData="M28,62 L32,62 L32,80 L28,80 Z"/>
+    <path android:fillColor="#CE93D8" android:pathData="M34,56 L38,56 L38,80 L34,80 Z"/>
+    <path android:fillColor="#D1C4E9" android:pathData="M40,62 L44,62 L44,80 L40,80 Z"/>
+    <path android:fillColor="#CE93D8" android:pathData="M46,58 L50,58 L50,80 L46,80 Z"/>
+    <path android:fillColor="#D1C4E9" android:pathData="M52,64 L56,64 L56,80 L52,80 Z"/>
+    <path android:fillColor="#CE93D8" android:pathData="M58,56 L62,56 L62,80 L58,80 Z"/>
+    <path android:fillColor="#D1C4E9" android:pathData="M64,62 L68,62 L68,80 L64,80 Z"/>
+    <path android:fillColor="#CE93D8" android:pathData="M70,68 L74,68 L74,80 L70,80 Z"/>
+
+</vector>
