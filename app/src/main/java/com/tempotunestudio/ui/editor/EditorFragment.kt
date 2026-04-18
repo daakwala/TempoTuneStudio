@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackParameters
 import androidx.media3.exoplayer.ExoPlayer
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.slider.Slider
@@ -17,6 +18,7 @@ import com.tempotunestudio.processing.ProcessingState
 import com.tempotunestudio.utils.FileUtils
 import kotlinx.coroutines.launch
 import java.io.File
+import kotlin.math.pow
 
 class EditorFragment : Fragment() {
 
@@ -90,8 +92,26 @@ class EditorFragment : Fragment() {
                     player?.apply {
                         setMediaItem(MediaItem.fromUri(android.net.Uri.parse(path)))
                         prepare()
+                        playWhenReady = true  // start playing as soon as buffered
                     }
                 }
+            }
+        }
+
+        // Keep preview pitch/tempo in sync with sliders
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.pitch.collect { semitones ->
+                val pitchFactor = 2.0.pow(semitones / 12.0).toFloat()
+                val currentSpeed = viewModel.tempo.value
+                player?.playbackParameters = PlaybackParameters(currentSpeed, pitchFactor)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.tempo.collect { speed ->
+                val semitones = viewModel.pitch.value
+                val pitchFactor = 2.0.pow(semitones / 12.0).toFloat()
+                player?.playbackParameters = PlaybackParameters(speed, pitchFactor)
             }
         }
 
