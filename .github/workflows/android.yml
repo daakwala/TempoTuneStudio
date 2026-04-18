@@ -61,6 +61,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 31
+          target: google_apis   # needed for full media codec support (METADATA_KEY_HAS_AUDIO etc.)
           arch: x86_64
           profile: Nexus 6
           script: ./gradlew connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.tempotunestudio.integration.VideoProcessingIntegrationTest

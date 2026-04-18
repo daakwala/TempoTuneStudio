@@ -72,10 +72,8 @@ class VideoProcessor(private val context: Context) {
         pitchSemitones: Float,
         onProgress: (Int, String) -> Unit
     ): String = withContext(Dispatchers.Main) {
-        val outputFile = File(
-            context.getExternalFilesDir(null),
-            "TempoTuneStudio_${System.currentTimeMillis()}.mp4"
-        )
+        val outputDir = context.getExternalFilesDir(null) ?: context.filesDir
+        val outputFile = File(outputDir, "TempoTuneStudio_${System.currentTimeMillis()}.mp4")
 
         onProgress(5, "Preparing export…")
 
@@ -98,7 +96,10 @@ class VideoProcessor(private val context: Context) {
 
         val effects = Effects(audioEffects, videoEffects)
 
-        val editedMediaItem = EditedMediaItem.Builder(MediaItem.fromUri(Uri.parse(inputPath)))
+        // Use fromFile() for bare paths so Transformer gets a proper file:// URI
+        val inputUri = if (inputPath.startsWith("/")) Uri.fromFile(File(inputPath))
+                       else Uri.parse(inputPath)
+        val editedMediaItem = EditedMediaItem.Builder(MediaItem.fromUri(inputUri))
             .setEffects(effects)
             .build()
 
